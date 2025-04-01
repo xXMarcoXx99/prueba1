@@ -1,0 +1,106 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* Variables de colores */
+:root {
+    --primary-color: #1db954;
+    --secondary-color: #191414;
+    --text-color: #ffffff;
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --input-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Fondo */
+body {
+    background: url('https://imagenes.elpais.com/resizer/v2/ZRMPBN23P5CXHF55RU66DAYR4Q.jpg?auth=44fe24bdb771dbc6c8d1c3d178dd1082f7bb54b19d98921db7e3f7d6fb408ff9&width=1960&height=1470&smart=true') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Capa oscura */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Contenedor del Dashboard */
+.dashboard-container {
+    background: var(--secondary-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Título */
+.dashboard-container h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Lista de opciones */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 15px 0;
+}
+
+ul li a {
+    display: block;
+    padding: 12px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+ul li a:hover {
+    background: #1ed760;
+}
+
+/* Botón de Cerrar Sesión */
+.btn-logout {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #e63946;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #d62839;
+}

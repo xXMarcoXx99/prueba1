@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link rel="stylesheet" href="reproductor.css"> <!-- Archivo CSS separado -->
+
+<body>
+
+    <!-- Botón de regresar al inicio -->
+    <button class="btn-home" onclick="window.location.href='dashboard.php'">Regresar al inicio</button>
+
+    <div class="player-container">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png" alt="Cover" class="cover" id="cover">
+
+        <div class="song-info">
+            <h2 id="title">Blinding Lights</h2>
+            <p id="artist">The Weeknd</p>
+        </div>
+
+        <div class="progress-container" onclick="setProgress(event)">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" onclick="prevSong()">⏮</button>
+            <button class="control-btn" id="playPauseBtn" onclick="togglePlay()">▶</button>
+            <button class="control-btn" onclick="nextSong()">⏭</button>
+        </div>
+
+        <div class="volume">
+            <span>🔊</span>
+            <input type="range" min="0" max="1" step="0.1" id="volume" onchange="setVolume()">
+        </div>
+    </div>
+
+    <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <script>
+        const songs = [
+            { title: "Blinding Lights", artist: "The Weeknd", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", cover: "https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png", bg: "https://upload.wikimedia.org/wikipedia/commons/5/59/The_Weeknd_-_Blinding_Lights.jpg" },
+            { title: "Bad Guy", artist: "Billie Eilish", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", cover: "https://upload.wikimedia.org/wikipedia/en/7/7e/Billie_Eilish_-_Bad_Guy.png", bg: "https://upload.wikimedia.org/wikipedia/commons/f/fe/Billie_Eilish_-_Bad_Guy.jpg" }
+        ];
+
+        let currentSongIndex = 0;
+        const audio = document.getElementById('audio');
+        const title = document.getElementById('title');
+        const artist = document.getElementById('artist');
+        const cover = document.getElementById('cover');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const progressBar = document.getElementById('progress-bar');
+        const body = document.querySelector('body');
+
+        function loadSong(index) {
+            title.innerText = songs[index].title;
+            artist.innerText = songs[index].artist;
+            cover.src = songs[index].cover;
+            audio.src = songs[index].src;
+            body.style.backgroundImage = `url(${songs[index].bg})`; // Cambiar fondo dinámicamente
+            body.style.backgroundSize = "cover";  // Mantener la imagen de fondo en su tamaño original
+            body.style.backgroundPosition = "center";  // Centrar la imagen para evitar distorsión
+        }
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerText = "⏸";
+            } else {
+                audio.pause();
+                playPauseBtn.innerText = "▶";
+            }
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        }
+
+        function setProgress(event) {
+            audio.currentTime = (event.offsetX / event.target.clientWidth) * audio.duration;
+        }
+
+        function setVolume() {
+            audio.volume = document.getElementById('volume').value;
+        }
+
+        loadSong(currentSongIndex);
+    </script>
+
+</body>
+</html>

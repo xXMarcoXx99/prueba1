@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Música</title>
+    <link rel="stylesheet" href="biblioteca.css">
+</head>
+<body>
+
+    <div class="library-container">
+        
+        <h2>Biblioteca de Música</h2>
+
+        <!-- Barra de búsqueda -->
+        <input type="text" class="search-bar" id="search" placeholder="Buscar canción..." onkeyup="filterSongs()">
+
+        <!-- Lista de canciones -->
+        <ul class="song-list" id="songList">
+            <!-- Canciones agregadas por JS -->
+        </ul>
+
+        <!-- Botón de regresar al inicio -->
+        <button class="back-button" onclick="window.location.href='index.html'">Regresar al inicio</button>
+    </div>
+
+    <script>
+        // Lista de canciones (Simulación, futura API aquí)
+        const songs = [
+            { title: "Blinding Lights", artist: "The Weeknd", duration: "3:20", img: "https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png" },
+            { title: "Save Your Tears", artist: "The Weeknd", duration: "3:35", img: "https://upload.wikimedia.org/wikipedia/en/2/2a/The_Weeknd_-_After_Hours.png" },
+            { title: "Bad Guy", artist: "Billie Eilish", duration: "3:14", img: "https://upload.wikimedia.org/wikipedia/en/7/7e/Billie_Eilish_-_Bad_Guy.png" },
+            { title: "Shape of You", artist: "Ed Sheeran", duration: "3:54", img: "https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png" },
+            { title: "Levitating", artist: "Dua Lipa", duration: "3:23", img: "https://upload.wikimedia.org/wikipedia/en/3/3a/Dua_Lipa_-_Future_Nostalgia_%28Official_Album_Cover%29.png" }
+        ];
+
+        // Cargar canciones en la lista
+        function loadSongs() {
+            const songList = document.getElementById('songList');
+            songList.innerHTML = ""; // Limpiar lista
+
+            songs.forEach(song => {
+                const li = document.createElement('li');
+                li.classList.add('song');
+
+                li.innerHTML = `
+                    <div class="song-info">
+                        <img src="${song.img}" alt="${song.title}">
+                        <div>
+                            <strong>${song.title}</strong> <br>
+                            <small>${song.artist} - ${song.duration}</small>
+                        </div>
+                    </div>
+                    <button class="play-btn"><i>▶</i></button>
+                `;
+
+                songList.appendChild(li);
+            });
+        }
+
+        // Filtro de búsqueda
+        function filterSongs() {
+            const search = document.getElementById('search').value.toLowerCase();
+            const songItems = document.querySelectorAll('.song');
+
+            songItems.forEach(item => {
+                const title = item.querySelector('strong').innerText.toLowerCase();
+                item.style.display = title.includes(search) ? "flex" : "none";
+            });
+        }
+
+        // Cargar canciones al iniciar
+        loadSongs();
+    </script>
+
+</body>
+</html>

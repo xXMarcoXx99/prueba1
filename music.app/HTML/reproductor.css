@@ -1,0 +1,158 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* Variables de colores */
+:root {
+    --primary-color: #1db954;
+    --secondary-color: #191414;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Fondo */
+body {
+    background: url('https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png') no-repeat center center fixed;
+    background-size: cover; /* Hace que la imagen cubra el fondo sin distorsionar */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed; /* Hace que la imagen de fondo se quede fija mientras se hace scroll */
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    position: relative;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Capa oscura */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Contenedor del reproductor */
+.player-container {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Imagen del álbum */
+.cover {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* Información de la canción */
+.song-info {
+    margin-bottom: 15px;
+}
+
+.song-info h2 {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.song-info p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Controles del reproductor */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.control-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Barra de progreso */
+.progress-container {
+    width: 100%;
+    background: var(--card-bg);
+    height: 5px;
+    border-radius: 5px;
+    margin: 15px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+/* Control de volumen */
+.volume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.volume input {
+    width: 80px;
+}
+
+/* Botón de regresar al inicio */
+.btn-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-home:hover {
+    background-color: #1ed760;
+}
+
+@media (max-width: 480px) {
+    .player-container {
+        width: 100%;
+    }
+}

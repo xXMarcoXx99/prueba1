@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Canciones</title>
+    <link rel="stylesheet" href="buscar.css">
+</head>
+<body>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <div class="logo">MusicApp</div>
+        <!-- Formulario de búsqueda -->
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Buscar canciones..." oninput="searchSongs()">
+        </div>
+        <button class="search-button" onclick="searchSongs()">Buscar</button>
+
+        <!-- Resultados de búsqueda -->
+        <div class="search-results" id="search-results">
+            <!-- Los resultados se agregarán dinámicamente aquí -->
+        </div>
+
+        <!-- Botón de regreso al inicio -->
+        <button class="back-button" onclick="goBack()">Regresar al menu</button>
+    </div>
+
+    <script>
+        // Función de búsqueda de canciones
+        function searchSongs() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Limpiar resultados previos
+
+            // Ejemplo de canciones (esto debería ir de la mano con tu API)
+            const songs = [
+                { title: 'Blinding Lights', artist: 'The Weeknd' },
+                { title: 'Levitating', artist: 'Dua Lipa' },
+                { title: 'Bad Guy', artist: 'Billie Eilish' },
+                { title: 'Save Your Tears', artist: 'The Weeknd' },
+                { title: 'Peaches', artist: 'Justin Bieber' }
+            ];
+
+            // Filtrar resultados
+            const filteredSongs = songs.filter(song => 
+                song.title.toLowerCase().includes(query) || 
+                song.artist.toLowerCase().includes(query)
+            );
+
+            // Mostrar resultados
+            filteredSongs.forEach(song => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `<span>${song.title}</span><span>${song.artist}</span>`;
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+
+        function goBack() {
+            window.location.href = "dashboard.php"; // Cambiar a la ruta que desees
+        }
+    </script>
+</body>
+</html>

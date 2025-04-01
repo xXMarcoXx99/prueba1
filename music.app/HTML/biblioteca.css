@@ -1,0 +1,153 @@
+        /* Importar fuente */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        /* Variables de colores */
+        :root {
+            --primary-color: #1db954;
+            --secondary-color: #191414;
+            --text-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Fondo */
+        body {
+            background: url('https://scontent.fmex36-1.fna.fbcdn.net/v/t1.6435-9/190849713_4246605095361387_4786908915939745451_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gAB1J-e5qsoQ7kNvgGcl60K&_nc_oc=AdmjUkT1iej1uCbhObwoJmuPTuuP1ufmS2oesvB_jEURhRLy2twMTLV6BY9IVAESQBs-XccQ9RuI3xLRVTJGNN5J&_nc_zt=23&_nc_ht=scontent.fmex36-1.fna&_nc_gid=K8rVDG8gHSrRSHZbvA0h0w&oh=00_AYFKuufQo_A0Qf3CBo8bR0Q-QpnJp7xLeIYqa6_XSKnv9Q&oe=6810249E') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Capa oscura */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        /* Contenedor principal */
+        .library-container {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Título */
+        .library-container h2 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Barra de búsqueda */
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        /* Lista de canciones */
+        .song-list {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Canción */
+        .song {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .song:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Detalles de la canción */
+        .song-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .song img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        /* Botón de reproducción */
+        .play-btn {
+            background: var(--primary-color);
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background: #1ed760;
+        }
+
+        .play-btn i {
+            font-size: 16px;
+            color: var(--secondary-color);
+        }
+
+        /* Botón de regresar al inicio */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #1ed760;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .library-container {
+                width: 100%;
+            }
+        }

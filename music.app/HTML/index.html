@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi App de Música</title>
+    <link rel="stylesheet" href="index.css"> <!-- Usa tu CSS aquí -->
+
+</head>
+<body>
+
+    <header>
+        <h1>🎵 Mi App de Música</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="register.php">Iniciar Sesión</a></li>
+                <li><a href="Biblioteca.html">Biblioteca</a></li>
+                <li><a href="Acercade.html">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <h2>¡Bienvenido a tu Biblioteca Musical!</h2>
+        <p>Descubre, organiza y escucha tu música favorita en un solo lugar.</p>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector("nav").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
